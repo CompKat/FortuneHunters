@@ -70,7 +70,7 @@ let update = function(game) {
     $("#buy_tech").text("Buy Tech - $"+(game.getTech()*1000+2000));
     $("#buy_car").text("Buy Car - $"+(game.getCar()*4000+20000));
 }
-//TEST
+
 class Game {
     constructor(logged_in, money, lemonade, hotdog, burger, toy, tech, car) {
         /*Lemonade-1
