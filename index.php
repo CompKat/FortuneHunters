@@ -50,6 +50,7 @@
                             echo '</div>';
                         }
                     ?>
+                    <button id="music" class="button is-link" data-playing="false" role="switch" aria-checked="false"><span>Play/Pause</span></button>
                     </div>
                 </div>
             </nav><br><br>
@@ -152,6 +153,8 @@
         <!-- Include links to JavaScript files below -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="render.js"></script>
+        <script src="audio.js"></script>
+        <audio class="soundtrack" src="bensound-sunny.mp3" type="audio/mpeg"></audio>
     </body>
 </html>
 
