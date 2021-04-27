@@ -19,7 +19,7 @@
         <div class="container is-fluid">
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <p class="title is-1">Fortune Hunters</p>
+                    <p class="title is-1">Fortune Hunters Test</p>
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
