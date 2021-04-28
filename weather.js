@@ -18,6 +18,9 @@ $(function() {
         let input = $('<input id="city-name" class="input is-medium" type="text" placeholder="City Name..."><button id="search" class="button is-success">Search</button>');
 
         let close = $('<button class="modal-close is-large" aria-label="close"></button>');
+        close.on("click", function(e) {
+            $("#weather-mod").remove();
+        });
 
         box.append($('<span class="subtitle is-4">Enter the name of a city to find the current weather!</span>'));
         box.append(input);
