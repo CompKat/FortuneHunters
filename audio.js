@@ -22,9 +22,9 @@ $(function() {
             button.attr("data-playing", 'false');
         }
 
-        $(".soundtrack").on('ended', function() {
+        audioElement.onended = function() {
             audioElement.play();
             button.attr("data-playing", 'true');
-        }, false);
+        }
     })
 });
