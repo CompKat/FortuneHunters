@@ -9,6 +9,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        <script data-ad-client="ca-pub-4433992129001330" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
         <title>Fortune Hunters</title>
 
@@ -137,6 +138,8 @@
                     echo '<script>alert("Not all fields were filled in")</script>';
                 } else if($_GET["error"] == "invalidemail") {
                     echo '<script>alert("Please use a valid email address")</script>';
+                } else if($_GET["error"] == "invaliduid") {
+                    echo '<script>alert("Make sure your username contains allowed values! (a-z, A-Z, 0-9)")</script>';
                 } else if($_GET["error"] == "invalidpassword") {
                     echo '<script>alert("Passwords did not match")</script>';
                 } else if($_GET["error"] == "usernametaken") {
@@ -146,7 +149,7 @@
                 } else if($_GET["error"] == "stmtfailed") {
                     echo '<script>alert("Something went wrong, please try again!")</script>';
                 } else if($_GET["error"] == "none") {
-                    echo '<script>alert("You have successfully signed up!")</script>';
+                    echo '<script>alert("You have successfully signed up! You may now log in to begin your journey!")</script>';
                 }
             }
         ?>
