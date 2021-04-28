@@ -1,5 +1,5 @@
 <?php
-    session_set_cookie_params(360);
+    session_set_cookie_params(0);
     session_start();
 ?>
 
@@ -23,34 +23,35 @@
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
-                    <?php
-                        if(isset($_SESSION["useruid"])) {
-                            $id = $_SESSION["useruid"];
-                            $money = $_SESSION["money"];
-                            $lemonade = $_SESSION["lemonade"];
-                            $hotdog = $_SESSION["hotdog"];
-                            $burger = $_SESSION["burger"];
-                            $toy = $_SESSION["toy"];
-                            $tech = $_SESSION["tech"];
-                            $car = $_SESSION["car"];
-                            echo "<p id='money' class='${id}'>Logged in as ${id} with $${money}</p>";
-                            echo '<a id="save" class="button is-primary"><strong>Save</strong></a>';
-                        } else {
-                            $money = 1;
-                            $lemonade = 0;
-                            $hotdog = 0;
-                            $burger = 0;
-                            $toy = 0;
-                            $tech = 0;
-                            $car = 0;
-                            echo "<p id='money'>You currently have - $${money}</p>";
-                            echo '<div class="buttons">';
-                            echo '<a id="signup" class="button is-primary"><strong>Sign up</strong></a>';
-                            echo '<a id="login" class="button is-light">Log in</a>';
-                            echo '</div>';
-                        }
-                    ?>
-                    <button id="music" class="button is-link" data-playing="false" role="switch" aria-checked="false"><span>Play/Pause</span></button>
+                        <?php
+                            if(isset($_SESSION["useruid"])) {
+                                $id = $_SESSION["useruid"];
+                                $money = $_SESSION["money"];
+                                $lemonade = $_SESSION["lemonade"];
+                                $hotdog = $_SESSION["hotdog"];
+                                $burger = $_SESSION["burger"];
+                                $toy = $_SESSION["toy"];
+                                $tech = $_SESSION["tech"];
+                                $car = $_SESSION["car"];
+                                echo "<p id='money' class='${id}'>Logged in as ${id} with $${money}</p>";
+                                echo '<a onClick={test} id="save" class="button is-primary"><strong>Save</strong></a>';
+                            } else {
+                                $money = 1;
+                                $lemonade = 0;
+                                $hotdog = 0;
+                                $burger = 0;
+                                $toy = 0;
+                                $tech = 0;
+                                $car = 0;
+                                echo "<p id='money'>You currently have - $${money}</p>";
+                                echo '<div class="buttons">';
+                                echo '<a id="signup" class="button is-primary"><strong>Sign up</strong></a>';
+                                echo '<a id="login" class="button is-light">Log in</a>';
+                                echo '</div>';
+                            }
+                        ?>
+                        <button id="music" class="button is-link" data-playing="false" role="switch" aria-checked="false"><span>Play/Pause</span></button>
+                        <button id="weather" class="button is-link"><span>Keep Busy</span></button>
                     </div>
                 </div>
             </nav><br><br>
@@ -88,7 +89,7 @@
                             $burger_price = ($burger)*20 + 120;
                             echo "<button id='buy_burger' class='button is-success is-large is-rounded'>Buy Burger - $${burger_price}</button>";
                         ?>
-                        <br><br>
+                        <br><br><br><br><br><br><br><br>
                     </div>
                 </div>
                 <div id="right-column" class="column is-half">
@@ -154,7 +155,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="render.js"></script>
         <script src="audio.js"></script>
+        <script src="weather.js"></script>
         <audio class="soundtrack" src="bensound-sunny.mp3" type="audio/mpeg"></audio>
+        
+
     </body>
 </html>
 
