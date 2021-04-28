@@ -34,7 +34,7 @@
                                 $tech = $_SESSION["tech"];
                                 $car = $_SESSION["car"];
                                 echo "<p id='money' class='${id}'>Logged in as ${id} with $${money}</p>";
-                                echo '<a onClick={test} id="save" class="button is-primary"><strong>Save</strong></a>';
+                                echo '<a id="save" class="button is-primary"><strong>Save</strong></a>';
                             } else {
                                 $money = 1;
                                 $lemonade = 0;
