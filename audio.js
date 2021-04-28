@@ -15,7 +15,6 @@ $(function() {
         }
         console.log("Click occured");
         if(button.attr("data-playing") === 'false') {
-            console.log("Audio plz");
             audioElement.play();
             button.attr("data-playing", 'true');
         } else if(button.attr("data-playing") === 'true') {
@@ -24,8 +23,8 @@ $(function() {
         }
 
         $(".soundtrack").on('ended', function() {
-            playButton.dataset.playing = 'false';
-            playButton.setAttribute( "aria-checked", "false" );
+            audioElement.play();
+            button.attr("data-playing", 'true');
         }, false);
     })
 });
