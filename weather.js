@@ -37,5 +37,6 @@ $(function() {
 
     $(document).on("click", "#search", function(e){
         //Add code for creating weather information.
+        console.log("Searching for weather in "+$("#city-name").text());
     });
 });
