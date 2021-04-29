@@ -9,6 +9,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        <link rel="stylesheet" href="loading.css">
        
         <title>Fortune Hunters</title>
 
@@ -26,13 +27,6 @@
                         <?php
                             if(isset($_SESSION["useruid"])) {
                                 $id = $_SESSION["useruid"];
-                                // $money = $_SESSION["money"];
-                                // $lemonade = $_SESSION["lemonade"];
-                                // $hotdog = $_SESSION["hotdog"];
-                                // $burger = $_SESSION["burger"];
-                                // $toy = $_SESSION["toy"];
-                                // $tech = $_SESSION["tech"];
-                                // $car = $_SESSION["car"];
                                 $money = 0;
                                 $lemonade = 0;
                                 $hotdog = 0;
@@ -135,6 +129,13 @@
                         <br><br>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="loading" class="modal is-active" style="background-color: rgba(240,240,240,1); text-align:center;">
+            <div class="modal-content" style="overflow:hidden;">
+                <div class="loader"></div><br><br>
+                <p>If this does not go away within 10 seconds, refresh the page!</p>
             </div>
         </div>
 
