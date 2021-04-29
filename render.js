@@ -260,6 +260,7 @@ $(async function() {
     } else {
         console.log("User is not logged in.");
         game = new Game(false, 1, 0, 0, 0, 0, 0, 0);
+        $("#loading").remove();
         update(game);
         runBars(game);
     }
