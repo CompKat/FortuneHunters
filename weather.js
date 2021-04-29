@@ -43,10 +43,6 @@ $(function() {
                 let content = $('<div class="dropdown-content" style="width:100%;"></div>');
                 for(let i = 0; i < top_results.length; i++) {
                     let item = $(`<a class="dropdown-item">${top_results[i]}</a>`);
-                    item.on('click', function(e) {
-                        $("#city-name").val(item.text());
-                        $(".box").find($("#autocomplete")).remove();
-                    })
                     content.append(item);
                 }
                 container.append(content);
@@ -54,6 +50,10 @@ $(function() {
                     $("#autocomplete").remove();
                 }
                 container.insertAfter($("#city-name"));
+                $(".dropdown-item").on('click', function(e) {
+                    $("#city-name").val($(e.target).text());
+                    $(".box").find($("#autocomplete")).remove();
+                });
             }
         })
 
