@@ -50,7 +50,7 @@
                                 echo '</div>';
                             }
                         ?>
-                        <button id="music" class="button is-link" data-playing="false" role="switch" aria-checked="false"><span>Play/Pause</span></button>
+                        <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px;"><img id="music-img" src="images/play.png"></a>
                         <button id="weather" class="button is-link"><span>Keep Busy</span></button>
                     </div>
                 </div>

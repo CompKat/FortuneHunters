@@ -17,9 +17,11 @@ $(function() {
         if(button.attr("data-playing") === 'false') {
             audioElement.play();
             button.attr("data-playing", 'true');
+            $("#music-img").attr("src","images/pause.png");
         } else if(button.attr("data-playing") === 'true') {
             audioElement.pause();
             button.attr("data-playing", 'false');
+            $("#music-img").attr("src","images/play.png");
         }
 
         audioElement.onended = function() {
