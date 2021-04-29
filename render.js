@@ -239,12 +239,23 @@ let runBars = function(game) {
 }
 
 
-$(function() {
+$(async function() {
     let game;
     if(document.getElementById("save")) {
         console.log("We are logged in.");
-        game = new Game(true, Number($("#money").text().split("$")[1]), Number($("#lemonade_value").text().substr(1)), Number($("#hotdog_value").text().substr(1))/5, Number($("#burger_value").text().substr(1))/15, Number($("#toy_value").text().substr(1))/50, Number($("#tech_value").text().substr(1))/200, Number($("#car_value").text().substr(1))/1000);
+        let result = await $.ajax({
+            method: "GET",
+            url: 'includes/reload.inc.php',
+            data: {
+                uid: $("#money").attr("class")
+            },
+        });
+        result = result.split("|");
+        console.log(result);
+        //game = new Game(true, Number($("#money").text().split("$")[1]), Number($("#lemonade_value").text().substr(1)), Number($("#hotdog_value").text().substr(1))/5, Number($("#burger_value").text().substr(1))/15, Number($("#toy_value").text().substr(1))/50, Number($("#tech_value").text().substr(1))/200, Number($("#car_value").text().substr(1))/1000);
+        game = new Game(true, Number(result[0]), Number(result[1]), Number(result[2]), Number(result[3]), Number(result[4]), Number(result[5]), Number(result[6]));
         runBars(game);
+        update(game);
     } else {
         console.log("User is not logged in.");
         game = new Game(false, 1, 0, 0, 0, 0, 0, 0);

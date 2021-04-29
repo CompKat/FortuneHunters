@@ -26,13 +26,20 @@
                         <?php
                             if(isset($_SESSION["useruid"])) {
                                 $id = $_SESSION["useruid"];
-                                $money = $_SESSION["money"];
-                                $lemonade = $_SESSION["lemonade"];
-                                $hotdog = $_SESSION["hotdog"];
-                                $burger = $_SESSION["burger"];
-                                $toy = $_SESSION["toy"];
-                                $tech = $_SESSION["tech"];
-                                $car = $_SESSION["car"];
+                                // $money = $_SESSION["money"];
+                                // $lemonade = $_SESSION["lemonade"];
+                                // $hotdog = $_SESSION["hotdog"];
+                                // $burger = $_SESSION["burger"];
+                                // $toy = $_SESSION["toy"];
+                                // $tech = $_SESSION["tech"];
+                                // $car = $_SESSION["car"];
+                                $money = 0;
+                                $lemonade = 0;
+                                $hotdog = 0;
+                                $burger = 0;
+                                $toy = 0;
+                                $tech = 0;
+                                $car = 0;
                                 echo "<p id='money' class='${id}'>Logged in as ${id} with $${money}</p>";
                                 echo '<a id="save" class="button is-primary"><strong>Save</strong></a>';
                             } else {
