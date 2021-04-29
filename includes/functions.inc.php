@@ -67,22 +67,6 @@ function uidExists($conn, $uid, $email) {
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $uid, $email, $pwd, $money, $lemonade, $hotdog, $burger, $toy, $tech, $car) {
-    $sql = "INSERT INTO users (usersUid, usersEmail, usersPwd, usersMoney, usersLemonade, usersHotdog, usersBurger, usersToy, usersTech, usersCar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed");
-        exit();
-    }
-
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-    mysqli_stmt_bind_param($stmt, "sssiiiiiii", $uid, $email, $hashedPwd, $money, $lemonade, $hotdog, $burger, $toy, $tech, $car);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    header("location: ../index.php?error=none");
-    exit();
-}
 
 function emptyInputLogin($uid, $pwd) {
     $result;
@@ -127,3 +111,21 @@ function loginUser($conn, $uid, $pwd) {
     header("location: ../index.php");
     exit();
 } 
+
+function createUser($conn, $uid, $email, $pwd, $money, $lemonade, $hotdog, $burger, $toy, $tech, $car) {
+    $sql = "INSERT INTO users (usersUid, usersEmail, usersPwd, usersMoney, usersLemonade, usersHotdog, usersBurger, usersToy, usersTech, usersCar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "sssiiiiiii", $uid, $email, $hashedPwd, $money, $lemonade, $hotdog, $burger, $toy, $tech, $car);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../index.php?error=none");
+    loginUser($conn, $uid, $pwd);
+    exit();
+}
