@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
         <link rel="stylesheet" href="loading.css">
+        <script src="https://kit.fontawesome.com/d03f11bef0.js" crossorigin="anonymous"></script>
        
         <title>Fortune Hunters</title>
 
@@ -18,9 +19,9 @@
     <body>
         <br>
         <div class="container is-fluid">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
+            <nav class="navbar" role="navigation" aria-label="main navigation" style="position:sticky; top:0;">
                 <div class="navbar-brand">
-                    <p class="title is-1">Fortune Hunters Test</p>
+                    <p class="title is-1">Fortune Hunters</p>
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
@@ -34,7 +35,7 @@
                                 $toy = 0;
                                 $tech = 0;
                                 $car = 0;
-                                echo "<p id='money' class='${id}'>Logged in as ${id} with $${money}</p>";
+                                echo "<i class='fas fa-user-circle' style='font-size:xx-large;'></i><p id='money' class='${id}' style='margin:5px;'> ${id} $${money}</p>";
                                 echo '<a id="save" class="button is-primary"><strong>Save</strong></a>';
                             } else {
                                 $money = 1;
@@ -51,8 +52,10 @@
                                 echo '</div>';
                             }
                         ?>
-                        <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px;"><img id="music-img" src="images/play.png"></a>
-                        <button id="weather" class="button is-link"><span>Keep Busy</span></button>
+                        <button id="weather" class="button is-link" style="margin:10px;"><span>Keep Busy</span></button>
+                        <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px;">
+                            <img id="music-img" src="images/play.png">
+                        </a>
                     </div>
                 </div>
             </nav><br><br>
