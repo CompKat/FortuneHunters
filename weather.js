@@ -1,12 +1,15 @@
 //key: AIzaSyBBoudYDgrfn1AObCSYdzHBVK6mfMkCRgo
 
 let getData = async function(city) {
-    let result = await $.ajax({
+    try { let result = await $.ajax({
         method: 'GET',
         url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4ec2a62ee6c30ca3381ca82264b33030`//,
         //dataType: 'json'
     });
     return result;
+    } catch (e) {
+        return "Error";
+    }
 }
 
 $(function() {
@@ -15,7 +18,7 @@ $(function() {
         
         let content = $('<div class="modal-content" style="background-color:white;"></div>');
         let box = $('<div class="box"></div>');
-        let input = $('<input id="city-name" class="input is-medium" type="text" placeholder="City Name..."><button id="search" class="button is-success">Search</button>');
+        let input = $('<input id="city-name" class="input is-medium" type="text" placeholder="City Name..."><button id="search" class="button is-success">Search</button><br><br>');
         input.on('input', async function(e) {
             let data = await $.ajax({
                 method: 'GET',
@@ -75,8 +78,32 @@ $(function() {
         $("body").find($("#weather-mod")).remove();
     });
 
-    $(document).on("click", "#search", function(e){
-        //Add code for creating weather information.
-        console.log("Searching for weather in "+$("#city-name").val());
+    $(document).on("click", "#search", async function(e){
+        if($('.box').find($("#data"))) {
+            $('#data').remove();
+        }
+        if($('.box').find($("#autocomplete"))) {
+            $('#autocomplete').remove();
+        }
+
+        let city = $("#city-name").val();
+        let data = await getData(city);
+        let data_container = $('<div id="data"></div>');
+        if(data === "Error") {
+            data_container.append($(`<p class="subtitle is-4"><b>Could not find city ${city}. Please try another city!</b></p>`));
+        } else {
+            let weather = data['weather']['0']['main'];
+            let desc = data['weather']['0']['description'];
+            let temp = data['main']['temp'];
+            temp = Math.round(((temp - 273.15)*(9/5)+32)*10)/10;
+            console.log(data);
+            console.log(`It is ${desc} in ${city} and ${temp} degrees Fahrenheit`);
+            data_container.append(`<img src="images/${weather.toLowerCase()}.jpg">`);
+            data_container.append(`<p class="title is-2">${city}</p>`);
+            data_container.append(`<p class="title is-4">There is currently ${desc}</p>`);
+            data_container.append(`<p class="title is-3">${temp}&deg;F</p>`);
+            data_container.append(`<p class="title is-5">Feels like ${Math.round(((data['main']['feels_like'] - 273.15)*(9/5)+32)*10)/10}&deg;F</p>`);
+        }
+        $('.box').append(data_container);
     });
 });
