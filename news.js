@@ -3,7 +3,7 @@ $(function() {
     $("#news").on('click', async function() {
         let data = await $.ajax({
             method: "GET",
-            url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=f51d403a9b614b2c8b3e662bc7a2ff84"
+            url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=f51d403a9b614b2c8b3e662bc7a2ff84" //Please dont steal key :c it is free to get your own
         });
         let chosen = Math.round(Math.random() * 20);
         let article_data = data['articles'][chosen];

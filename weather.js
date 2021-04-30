@@ -3,7 +3,7 @@
 let getData = async function(city) {
     try { let result = await $.ajax({
         method: 'GET',
-        url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4ec2a62ee6c30ca3381ca82264b33030`//,
+        url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4ec2a62ee6c30ca3381ca82264b33030` //Please dont steal key :c it is free to get your own
         //dataType: 'json'
     });
     return result;
