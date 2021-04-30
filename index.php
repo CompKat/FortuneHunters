@@ -36,7 +36,7 @@
                                 $tech = 0;
                                 $car = 0;
                                 echo "<i class='fas fa-user-circle' style='font-size:xx-large;'></i><p id='money' class='${id}' style='margin:5px;'> ${id} $${money}</p>";
-                                echo '<a id="save" class="button is-primary"><strong>Save</strong></a>';
+                                echo '<a id="save" class="button is-primary" style="margin:5px;"><strong>Save</strong></a>';
                             } else {
                                 $money = 1;
                                 $lemonade = 0;
@@ -52,8 +52,9 @@
                                 echo '</div>';
                             }
                         ?>
-                        <button id="weather" class="button is-link" style="margin:10px;"><span>Keep Busy</span></button>
-                        <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px;">
+                        <button id="weather" class="button is-link" style="margin:5px;"><span>Keep Busy</span></button>
+                        <button id="news" class="button is-link" style="margin:5px;"><span>View News</span></button>
+                        <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px; margin:10px;">
                             <img id="music-img" src="images/play.png">
                         </a>
                     </div>
@@ -169,6 +170,7 @@
         <script src="render.js"></script>
         <script src="audio.js"></script>
         <script src="weather.js"></script>
+        <script src="news.js"></script>
         <audio class="soundtrack" src="bensound-sunny.mp3" type="audio/mpeg"></audio>
         
 
