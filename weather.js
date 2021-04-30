@@ -93,6 +93,8 @@ $(function() {
             data_container.append($(`<p class="subtitle is-4"><b>Could not find city ${city}. Please try another city!</b></p>`));
         } else {
             let weather = data['weather']['0']['main'];
+            if(weather.toLowerCase() == "mist" || weather.toLowerCase() == "smoke" || weather.toLowerCase() == "haze" || weather.toLowerCase() == "dust"
+            || weather.toLowerCase() == "sand" || weather.toLowerCase() == "ash" || weather.toLowerCase() == "squall") {weather = "Fog";}
             let desc = data['weather']['0']['description'];
             let temp = data['main']['temp'];
             temp = Math.round(((temp - 273.15)*(9/5)+32)*10)/10;
