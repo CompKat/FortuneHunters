@@ -56,12 +56,12 @@ let createLogin = function() {
 
 let update = function(game) {
     $("#money").text(""+$("#money").text().split("$")[0]+"$"+game.money);
-    $("#lemonade_value").text("$"+(game.getLemonade()));
-    $("#hotdog_value").text("$"+(game.getHotdog()*5));
-    $("#burger_value").text("$"+(game.getBurger()*15));
-    $("#toy_value").text("$"+(game.getToy()*50));
-    $("#tech_value").text("$"+(game.getTech()*200));
-    $("#car_value").text("$"+(game.getCar()*1000));
+    $("#lemonade_value").text("$"+(game.getLemonade()*game.multipler));
+    $("#hotdog_value").text("$"+(game.getHotdog()*5*game.multipler));
+    $("#burger_value").text("$"+(game.getBurger()*15*game.multipler));
+    $("#toy_value").text("$"+(game.getToy()*50*game.multipler));
+    $("#tech_value").text("$"+(game.getTech()*200*game.multipler));
+    $("#car_value").text("$"+(game.getCar()*1000*game.multipler));
 
     $("#buy_lemonade").text("Buy Lemonade - $"+(game.getLemonade()*3+1));
     $("#buy_hotdog").text("Buy Hotdog - $"+(game.getHotdog()*7+15));
@@ -72,7 +72,7 @@ let update = function(game) {
 }
 
 class Game {
-    constructor(logged_in, money, lemonade, hotdog, burger, toy, tech, car) {
+    constructor(logged_in, money, lemonade, hotdog, burger, toy, tech, car, multiplier) {
         /*Lemonade-1
         * Hotdog-5
         * Burger-15
@@ -94,6 +94,7 @@ class Game {
         this.tech_active = false;
         this.car = car;
         this.car_active = false;
+        this.multipler = multiplier;
     }
 }
 
@@ -162,7 +163,7 @@ let runBars = function(game) {
                 $(`#lemonade_bar`).attr("value", value+0.1);
             } else {
                 $(`#lemonade_bar`).attr("value", 0);
-                game.setMoney(game.getMoney()+game.getLemonade());
+                game.setMoney(game.getMoney()+game.getLemonade()*game.multipler);
             }
         },5);
     }
@@ -176,7 +177,7 @@ let runBars = function(game) {
                 $(`#hotdog_bar`).attr("value", value+0.1);
             } else {
                 $(`#hotdog_bar`).attr("value", 0);
-                game.setMoney(game.getMoney()+game.getHotdog()*5);
+                game.setMoney(game.getMoney()+game.getHotdog()*5*game.multipler);
             }
         },10);
     }
@@ -190,7 +191,7 @@ let runBars = function(game) {
                 $(`#burger_bar`).attr("value", value+0.1);
             } else {
                 $(`#burger_bar`).attr("value", 0);
-                game.setMoney(game.getMoney()+game.getBurger()*15);
+                game.setMoney(game.getMoney()+game.getBurger()*15*game.multipler);
             }
         },20);
     }
@@ -204,7 +205,7 @@ let runBars = function(game) {
                 $(`#toy_bar`).attr("value", value+0.1);
             } else {
                 $(`#toy_bar`).attr("value", 0);
-                game.setMoney(game.getMoney()+game.getToy()*50);
+                game.setMoney(game.getMoney()+game.getToy()*50*game.multipler);
             }
         },40);
     }
@@ -218,7 +219,7 @@ let runBars = function(game) {
                 $(`#tech_bar`).attr("value", value+0.05);
             } else {
                 $(`#tech_bar`).attr("value", 0);
-                game.setMoney(game.getMoney()+game.getTech()*200);
+                game.setMoney(game.getMoney()+game.getTech()*200*game.multipler);
             }
         },40);
     }
@@ -232,7 +233,7 @@ let runBars = function(game) {
                 $(`#car_bar`).attr("value", value+0.025);
             } else {
                 $(`#car_bar`).attr("value", 0);
-                game.setMoney(game.getMoney()+game.getCar()*1000);
+                game.setMoney(game.getMoney()+game.getCar()*1000*game.multipler);
             }
         },40);
     }
@@ -253,17 +254,40 @@ $(async function() {
         result = result.split("|");
         console.log(result);
         //game = new Game(true, Number($("#money").text().split("$")[1]), Number($("#lemonade_value").text().substr(1)), Number($("#hotdog_value").text().substr(1))/5, Number($("#burger_value").text().substr(1))/15, Number($("#toy_value").text().substr(1))/50, Number($("#tech_value").text().substr(1))/200, Number($("#car_value").text().substr(1))/1000);
-        game = new Game(true, Number(result[0]), Number(result[1]), Number(result[2]), Number(result[3]), Number(result[4]), Number(result[5]), Number(result[6]));
+        game = new Game(true, Number(result[0]), Number(result[1]), Number(result[2]), Number(result[3]), Number(result[4]), Number(result[5]), Number(result[6]), 1);
         $("#loading").remove();
         runBars(game);
         update(game);
     } else {
         console.log("User is not logged in.");
-        game = new Game(false, 1, 0, 0, 0, 0, 0, 0);
+        game = new Game(false, 1, 0, 0, 0, 0, 0, 0, 1);
         $("#loading").remove();
         update(game);
         runBars(game);
     }
+
+    setInterval(function() {
+        console.log("Bonus time. Earn double money for a short time.");
+        game.multipler = 2;
+        $("#lemonade_value").css("color", "red");
+        $("#hotdog_value").css("color", "red");
+        $("#burger_value").css("color", "red");
+        $("#toy_value").css("color", "red");
+        $("#tech_value").css("color", "red");
+        $("#car_value").css("color", "red");
+        update(game);
+        setTimeout(function(){
+            console.log("Ending bonus time. Will restart soon!");
+            game.multipler = 1;
+            $("#lemonade_value").css("color", "black");
+            $("#hotdog_value").css("color", "black");
+            $("#burger_value").css("color", "black");
+            $("#toy_value").css("color", "black");
+            $("#tech_value").css("color", "black");
+            $("#car_value").css("color", "black");
+            update(game);
+        },60000);
+    }, 360000);
 
     $("#signup").on("click", function() {
         console.log("Opening Signup Form");
