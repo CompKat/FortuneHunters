@@ -14,6 +14,23 @@ $(function() {
             });
         } catch {
             console.log("There was an error loading the news source");
+            let modal = $('<div id="news-mod" class="modal is-active"></div>');
+            let background = $('<div id="news-background" class="modal-background"></div>');
+            modal.append(background);
+            background.on("click", function() {
+                $("body").find("#news-mod").remove();
+            })
+            
+            let content = $('<div class="modal-content" style="background-color:white;"></div>');
+            let close = $('<button class="modal-close is-large" aria-label="close"></button>');
+            close.on("click", function(e) {
+                $("#news-mod").remove();
+            });
+            content.append('<p class="subtitle is-3">There have been too many requests to the API, please try again later!</p>');
+            modal.append(content);
+            modal.append(close);
+            $('body').append(modal);
+            return;
         }
         console.log(data);
         let chosen = Math.round(Math.random() * 4);
