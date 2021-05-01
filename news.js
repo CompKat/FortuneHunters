@@ -1,18 +1,24 @@
-//45d77fbed41b1ddb861d987ad8d213c8
+//0h5zvyhog3v90t6zff5qhrmvp
 $(function() {
     $("#news").on('click', async function() {
         let data;
         try {data = await $.ajax({
-            method: "GET",
-            url: "http://api.mediastack.com/v1/news?access_key=45d77fbed41b1ddb861d987ad8d213c8&limit=20&countries=us" //Please dont steal key :c it is free to get your own
+            "async": true,
+	        "crossDomain": true,
+	        "url": "https://google-news1.p.rapidapi.com/topic-headlines?topic=WORLD&country=US&lang=en",
+	        "method": "GET",
+	        "headers": {
+		        "x-rapidapi-key": "c5317d8f5bmsh5a32b0c17ea4149p191c8djsn76af2bbbf6a5",
+		        "x-rapidapi-host": "google-news1.p.rapidapi.com"
+	        } //Please dont steal key :c it is free to get your own
             });
         } catch {
             console.log("There was an error loading the news source");
         }
         console.log(data);
         let chosen = Math.round(Math.random() * 20);
-        let article_data = data['data'][chosen];
-        console.log(data['data'][chosen]);
+        let article_data = data['articles'][chosen];
+        console.log(data['articles'][chosen]);
 
         let modal = $('<div id="news-mod" class="modal is-active"></div>');
         let background = $('<div id="news-background" class="modal-background"></div>');
@@ -31,14 +37,14 @@ $(function() {
         let title = $(`<strong class="subtitle is-3">${article_data['title']}</strong>`);
         content.append(title);
         content.append($('<br>'));
-        let author = $(`<p>Written by ${article_data['author'] || 'unknown'}</p>`);
+        let author = $(`<p>Written by ${article_data['source']['title'] || 'unknown'}</p>`);
         content.append(author);
-        if(article_data['image'] !== null) {
-            if(article_data['image'].search(".mp3") == -1) {
-                box.append(`<img src="${article_data['image']}">`);
-            }
-        }
-        box.append(`<p>${article_data['description']}</p><br>`);
+        // if(article_data['imageUrl'] !== null) {
+        //     if(article_data['imageUrl'].search(".mp3") == -1) {
+        //         box.append(`<img src="${article_data['imageUrl']}">`);
+        //     }
+        // }
+        //box.append(`<p>${article_data['description']}</p><br>`);
         box.append(`<small>Learn more about the story <a href="${article_data['url']}">here</a>.</small>`);
 
         content.append(box);
