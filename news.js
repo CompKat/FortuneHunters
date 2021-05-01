@@ -4,20 +4,21 @@ $(function() {
         let data;
         try {data = await $.ajax({
             "async": true,
-	        "crossDomain": true,
-	        "url": "https://google-news1.p.rapidapi.com/topic-headlines?topic=WORLD&country=US&lang=en",
-	        "method": "GET",
-	        "headers": {
-		        "x-rapidapi-key": "c5317d8f5bmsh5a32b0c17ea4149p191c8djsn76af2bbbf6a5",
-		        "x-rapidapi-host": "google-news1.p.rapidapi.com"
-	        } //Please dont steal key :c it is free to get your own
+            "crossDomain": true,
+            "url": "https://newscatcher.p.rapidapi.com/v1/search?q=World&lang=en",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "c5317d8f5bmsh5a32b0c17ea4149p191c8djsn76af2bbbf6a5",
+                "x-rapidapi-host": "newscatcher.p.rapidapi.com"
+            } //Please dont steal key :c it is free to get your own
             });
         } catch {
             console.log("There was an error loading the news source");
         }
         console.log(data);
-        let chosen = Math.round(Math.random() * 20);
+        let chosen = Math.round(Math.random() * 4);
         let article_data = data['articles'][chosen];
+        console.log("Article #"+chosen);
         console.log(data['articles'][chosen]);
 
         let modal = $('<div id="news-mod" class="modal is-active"></div>');
@@ -37,15 +38,15 @@ $(function() {
         let title = $(`<strong class="subtitle is-3">${article_data['title']}</strong>`);
         content.append(title);
         content.append($('<br>'));
-        let author = $(`<p>Written by ${article_data['source']['title'] || 'unknown'}</p>`);
+        let author = $(`<p>Written by ${article_data['author'] || 'unknown'}</p>`);
         content.append(author);
         // if(article_data['imageUrl'] !== null) {
         //     if(article_data['imageUrl'].search(".mp3") == -1) {
         //         box.append(`<img src="${article_data['imageUrl']}">`);
         //     }
         // }
-        //box.append(`<p>${article_data['description']}</p><br>`);
-        box.append(`<small>Learn more about the story <a href="${article_data['url']}">here</a>.</small>`);
+        box.append(`<p>${article_data['summary']}</p><br>`);
+        box.append(`<small>Learn more about the story <a href="${article_data['link']}">here</a>.</small>`);
 
         content.append(box);
         modal.append(content);
