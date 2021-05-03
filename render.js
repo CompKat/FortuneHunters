@@ -236,6 +236,7 @@ let runBars = function(game) {
 
 $(async function() {
     let game;
+    let news_debounce = false;
     if(document.getElementById("save")) {
         let result = await $.ajax({
             method: "GET",
@@ -300,13 +301,27 @@ $(async function() {
                 tech: game.getTech(),
                 car: game.getCar()
             },
-        })
+        });
+        let save = $('<section id="saved" class="hero is-small is-success" style="text-align:center;"><div class="hero-body" style="height:4vh; padding:1vh 0 0 0;"><p class="subtitle is-4">Progress has been saved!</p></div></section>');
+        $('body').prepend(save);
+        setTimeout(function() {
+            $("#saved").remove();
+        }, 1500)
     });
 
     $("body").on("click", "button", function(e) {
         if(e.target.id.substr(0,3) == "buy" && game.getMoney() >= Number($(`#${e.target.id}`).text().split("$")[1])) {
             game.buyItem(e.target.id.split("_")[1]);
+        } else if(e.target.id == "news") {
+            if(!news_debounce) {
+                news_debounce = true;
+                game.setMoney(game.getMoney()+10);
+                update(game);
+                setTimeout(function() {
+                    news_debounce = false;
+                }, 300000);
+            }
         }
-    })
+    });
 })
 
