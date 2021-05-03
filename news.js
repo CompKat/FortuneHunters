@@ -18,6 +18,7 @@ $(function() {
             });
         } catch {
             try {
+                console.log("Trying https api");
                 data = await $.ajax({
                     "async": true,
                     "crossDomain": true,
