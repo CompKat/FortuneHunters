@@ -313,6 +313,7 @@ $(async function() {
         if(e.target.id.substr(0,3) == "buy" && game.getMoney() >= Number($(`#${e.target.id}`).text().split("$")[1])) {
             game.buyItem(e.target.id.split("_")[1]);
         } else if(e.target.id == "news") {
+            console.log("News clicked");
             if(!news_debounce) {
                 news_debounce = true;
                 game.setMoney(game.getMoney()+10);
