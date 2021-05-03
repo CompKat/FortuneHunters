@@ -90,7 +90,7 @@ $(function() {
         let data = await getData(city);
         let data_container = $('<div id="data"></div>');
         if(data === "Error") {
-            data_container.append($(`<p class="subtitle is-4"><b>Could not find city ${city}. Please try another city!</b></p>`));
+            data_container.append($(`<p class="subtitle is-4"><b>Could not find city ${city}, or your app is open on https! The API currently only supports requests over http, try our news button instead!</b></p>`));
         } else {
             let weather = data['weather']['0']['main'];
             if(weather.toLowerCase() == "mist" || weather.toLowerCase() == "smoke" || weather.toLowerCase() == "haze" || weather.toLowerCase() == "dust"
