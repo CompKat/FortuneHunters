@@ -18,7 +18,7 @@
 
     <style>
         html, body {
-            height: 100%;
+            height: 201vh;
         }
         body, nav {
             background-image: url('images/background.jpg');
