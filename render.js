@@ -259,6 +259,7 @@ $(async function() {
 
     setInterval(function() {
         game.multipler = 2;
+        $("#bonus").attr("hidden", false);
         $("#lemonade_value").css("color", "red");
         $("#hotdog_value").css("color", "red");
         $("#burger_value").css("color", "red");
@@ -268,6 +269,7 @@ $(async function() {
         update(game);
         setTimeout(function(){
             game.multipler = 1;
+            $("#bonus").attr("hidden", true);
             $("#lemonade_value").css("color", "black");
             $("#hotdog_value").css("color", "black");
             $("#burger_value").css("color", "black");

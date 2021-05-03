@@ -59,8 +59,13 @@
                         </a>
                     </div>
                 </div>
-            </nav><br><br>
-
+            </nav>
+            <section class="hero is-small is-danger" style="text-align:center;">
+                <div id="bonus" hidden class="hero-body" style="height:4vh; padding:1vh 0 0 0;">
+                    <p class="subtitle is-4">Bonus time is active! Earn double money!</p>
+                </div>
+            </section>
+            <br><br>
             <div class="columns" style="text-align: center;">
                 <div id="left-column" class="column is-half">
                     <div class="lemonade">
