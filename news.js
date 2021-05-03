@@ -91,9 +91,7 @@ $(function() {
         let author = $(`<p>Written by ${author_data || 'unknown'}</p>`);
         content.append(author);
         if(img_data !== null) {
-            if(img_data.search(".mp3") == -1) {
-                box.append(`<img src="${img_data}">`);
-            }
+            box.append(`<img src="${img_data}">`);
         }
         box.append(`<p>${description_data}</p><br>`);
         box.append(`<small>Learn more about the story <a href="${link_data}">here</a>.</small>`);
