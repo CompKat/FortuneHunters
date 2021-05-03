@@ -58,14 +58,14 @@
                                 $tech = 0;
                                 $car = 0;
                                 echo "<p id='money'>You currently have - $${money}</p>";
-                                echo '<div class="buttons">';
-                                echo '<a id="signup" class="button is-primary"><strong>Sign up</strong></a>';
+                                //echo '<div class="buttons">';
+                                echo '<a id="signup" class="button is-primary" style="margin:5px;"><strong>Sign up</strong></a>';
                                 echo '<a id="login" class="button is-light">Log in</a>';
-                                echo '</div>';
+                                //echo '</div>';
                             }
                         ?>
                         <button id="weather" class="button is-link" style="margin:5px;"><span>Keep Busy</span></button>
-                        <button id="news" class="button is-link" style="margin:5px;"><span>View News, earn $10 (once every 5min)</span></button>
+                        <button id="news" class="button is-link" style=""><span>View News, earn $10 (once every 5min)</span></button>
                         <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px; margin:10px;">
                             <img id="music-img" src="images/play.png">
                         </a>
