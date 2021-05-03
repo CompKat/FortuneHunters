@@ -18,7 +18,6 @@ $(function() {
             });
         } catch {
             try {
-                console.log("Trying https api");
                 data = await $.ajax({
                     "async": true,
                     "crossDomain": true,
@@ -90,7 +89,7 @@ $(function() {
         content.append($('<br>'));
         let author = $(`<p>Written by ${author_data || 'unknown'}</p>`);
         content.append(author);
-        if(img_data !== null) {
+        if(img_data !== null && img_data !== undefined) {
             box.append(`<img src="${img_data}">`);
         }
         box.append(`<p>${description_data}</p><br>`);
