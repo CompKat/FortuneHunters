@@ -16,6 +16,18 @@
 
     </head>
 
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body, nav {
+            background-image: url('images/background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+
     <body>
         <br>
         <div class="container is-fluid">
