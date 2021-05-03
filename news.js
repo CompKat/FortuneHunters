@@ -29,7 +29,6 @@ $(function() {
                     } //Please dont steal key :c it is free to get your own
                 });
             } catch {
-                console.log("There was an error loading the news source");
                 let modal = $('<div id="news-mod" class="modal is-active"></div>');
                 let background = $('<div id="news-background" class="modal-background"></div>');
                 modal.append(background);
@@ -49,7 +48,6 @@ $(function() {
                 return;
             }
         }
-        console.log(data);
         let chosen = Math.round(Math.random() * 4);
         let article_data;
         let title_data;
@@ -71,8 +69,6 @@ $(function() {
             description_data = article_data['description'];
             img_data = article_data["imageUrl"];
         }
-        console.log("Article #"+chosen);
-        console.log(article_data);
 
         let modal = $('<div id="news-mod" class="modal is-active"></div>');
         let background = $('<div id="news-background" class="modal-background"></div>');

@@ -156,7 +156,6 @@ Game.prototype.buyItem = function(name) {
 let runBars = function(game) {
     if(game.getLemonade() !== 0 && !game.lemonade_active) {
         game.lemonade_active = true;
-        console.log("Setting up lemonade bar");
         setInterval(() => {
             let value = Number($(`#lemonade_bar`).attr("value"));
             if(value <= 100) {
@@ -170,7 +169,6 @@ let runBars = function(game) {
 
     if(game.getHotdog() !== 0 && !game.hotdog_active) {
         game.hotdog_active = true;
-        console.log("Setting up hotdog bar");
         setInterval(() => {
             let value = Number($(`#hotdog_bar`).attr("value"));
             if(value <= 100) {
@@ -184,7 +182,6 @@ let runBars = function(game) {
 
     if(game.getBurger() !== 0 && !game.burger_active) {
         game.burger_active = true;
-        console.log("Setting up burger bar");
         setInterval(() => {
             let value = Number($(`#burger_bar`).attr("value"));
             if(value <= 100) {
@@ -198,7 +195,6 @@ let runBars = function(game) {
 
     if(game.getToy() !== 0 && !game.toy_active) {
         game.toy_active = true;
-        console.log("Setting up toy bar");
         setInterval(() => {
             let value = Number($(`#toy_bar`).attr("value"));
             if(value <= 100) {
@@ -212,7 +208,6 @@ let runBars = function(game) {
 
     if(game.getTech() !== 0 && !game.tech_active) {
         game.tech_active = true;
-        console.log("Setting up tech bar");
         setInterval(() => {
             let value = Number($(`#tech_bar`).attr("value"));
             if(value <= 100) {
@@ -226,7 +221,6 @@ let runBars = function(game) {
 
     if(game.getCar() !== 0 && !game.car_active) {
         game.car_active = true;
-        console.log("Setting up car bar");
         setInterval(() => {
             let value = Number($(`#car_bar`).attr("value"));
             if(value <= 100) {
@@ -243,7 +237,6 @@ let runBars = function(game) {
 $(async function() {
     let game;
     if(document.getElementById("save")) {
-        console.log("We are logged in.");
         let result = await $.ajax({
             method: "GET",
             url: 'includes/reload.inc.php',
@@ -252,14 +245,12 @@ $(async function() {
             },
         });
         result = result.split("|");
-        console.log(result);
         //game = new Game(true, Number($("#money").text().split("$")[1]), Number($("#lemonade_value").text().substr(1)), Number($("#hotdog_value").text().substr(1))/5, Number($("#burger_value").text().substr(1))/15, Number($("#toy_value").text().substr(1))/50, Number($("#tech_value").text().substr(1))/200, Number($("#car_value").text().substr(1))/1000);
         game = new Game(true, Number(result[0]), Number(result[1]), Number(result[2]), Number(result[3]), Number(result[4]), Number(result[5]), Number(result[6]), 1);
         $("#loading").remove();
         runBars(game);
         update(game);
     } else {
-        console.log("User is not logged in.");
         game = new Game(false, 1, 0, 0, 0, 0, 0, 0, 1);
         $("#loading").remove();
         update(game);
@@ -267,7 +258,6 @@ $(async function() {
     }
 
     setInterval(function() {
-        console.log("Bonus time. Earn double money for a short time.");
         game.multipler = 2;
         $("#lemonade_value").css("color", "red");
         $("#hotdog_value").css("color", "red");
@@ -277,7 +267,6 @@ $(async function() {
         $("#car_value").css("color", "red");
         update(game);
         setTimeout(function(){
-            console.log("Ending bonus time. Will restart soon!");
             game.multipler = 1;
             $("#lemonade_value").css("color", "black");
             $("#hotdog_value").css("color", "black");
@@ -290,15 +279,12 @@ $(async function() {
     }, 360000);
 
     $("#signup").on("click", function() {
-        console.log("Opening Signup Form");
         createSignup();
     });
     $("#login").on('click', function() {
-        console.log("Opening Login Form");
         createLogin();
     });
     $("#save").on("click", function() {
-        console.log("Saving current progress.");
         $.ajax({
             method: "POST",
             url: "includes/save.inc.php",
@@ -312,10 +298,6 @@ $(async function() {
                 tech: game.getTech(),
                 car: game.getCar()
             },
-            success: function(html) {
-                console.log("Progress has been saved.");
-                console.log(html);
-            }
         })
     });
 

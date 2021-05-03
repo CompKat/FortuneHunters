@@ -98,8 +98,6 @@ $(function() {
             let desc = data['weather']['0']['description'];
             let temp = data['main']['temp'];
             temp = Math.round(((temp - 273.15)*(9/5)+32)*10)/10;
-            console.log(data);
-            console.log(`It is ${desc} in ${city} and ${temp} degrees Fahrenheit`);
             data_container.append(`<img src="images/${weather.toLowerCase()}.jpg">`);
             data_container.append(`<p class="title is-2">${city}</p>`);
             data_container.append(`<p class="title is-4">There is currently ${desc}</p>`);
