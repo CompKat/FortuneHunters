@@ -86,7 +86,7 @@
             <div class="columns" style="text-align: center;">
                 <div id="left-column" class="column is-half">
                     <div class="lemonade">
-                        <p class="title is-2">Lemonade Stand</p>
+                        <p class="title is-2">Lemonade Stand <img src="images/lemonade.png" alt="" style="width:5vh; height:5vh; margin-left:5px;"></p>
                         <div class="bar">
                             <progress id="lemonade_bar" class="progress is-large is-success" value="0" max="100" style="width: 50%; margin:auto;"></progress><p id="lemonade_value" class="subtitle is-3"><?php echo"$${lemonade}";?></p>
                         </div><br><br>
@@ -97,7 +97,7 @@
                         <br><br><br><br><br><br><br><br>
                     </div>
                     <div class="hotdog">
-                        <p class="title is-2">Hotdog Stand</p>
+                        <p class="title is-2">Hotdog Stand <img src="images/hotdog.png" alt="" style="width:5vh; height:5vh; margin-left:5px;"></p>
                         <div class="bar">
                             <progress id="hotdog_bar" class="progress is-large is-success" value="0" max="100" style="width: 50%; margin:auto;"></progress><p id="hotdog_value" class="subtitle is-3"><?php $hotdog_val = $hotdog*5; echo"$${hotdog_val}";?></p>
                         </div><br><br>
@@ -108,7 +108,7 @@
                         <br><br><br><br><br><br><br><br>
                     </div>
                     <div class="burger">
-                        <p class="title is-2">Burger Truck</p>
+                        <p class="title is-2">Burger Truck <img src="images/burger.png" alt="" style="position:relative; width:5vh; height:5vh; margin-left:5px; top:1vh;"></p>
                         <div class="bar">
                             <progress id="burger_bar" class="progress is-large is-success" value="0" max="100" style="width: 50%; margin:auto;"></progress><p id="burger_value" class="subtitle is-3"><?php $burger_val = $burger*15; echo"$${burger_val}";?></p>
                         </div><br><br>
@@ -121,7 +121,7 @@
                 </div>
                 <div id="right-column" class="column is-half">
                 <div class="toy">
-                        <p class="title is-2">Toy Store</p>
+                        <p class="title is-2">Toy Store <img src="images/toys.png" alt="" style="width:5vh; height:5vh; margin-left:5px;"></p>
                         <div class="bar">
                             <progress id="toy_bar" class="progress is-large is-success" value="0" max="100" style="width: 50%; margin:auto;"></progress><p id="toy_value" class="subtitle is-3"><?php $toy_val = $toy*50; echo"$${toy_val}";?></p>
                         </div><br><br>
@@ -133,7 +133,7 @@
                         <br><br><br><br><br><br><br><br>
                     </div>
                     <div class="tech">
-                        <p class="title is-2">Tech Stand</p>
+                        <p class="title is-2">Tech Stand <img src="images/tech.png" alt="" style="width:5vh; height:5vh; margin-left:5px;"></p>
                         <div class="bar">
                             <progress id="tech_bar" class="progress is-large is-success" value="0" max="100" style="width: 50%; margin:auto;"></progress><p id="tech_value" class="subtitle is-3"><?php $tech_val = $tech*200; echo"$${tech_val}";?></p>
                         </div><br><br>
@@ -144,7 +144,7 @@
                         <br><br><br><br><br><br><br><br>
                     </div>
                     <div class="car">
-                        <p class="title is-2">Car Dealership</p>
+                        <p class="title is-2">Car Dealership <img src="images/car.png" alt="" style="width:5vh; height:5vh; margin-left:5px;"></p>
                         <div class="bar">
                             <progress id="car_bar" class="progress is-large is-success" value="0" max="100" style="width: 50%; margin:auto;"></progress><p id="car_value" class="subtitle is-3"><?php $car_val = $car*1000; echo"$${car_val}";?></p>
                         </div><br><br>
