@@ -66,6 +66,11 @@
                         ?>
                         <button id="weather" class="button is-link" style="margin:5px;"><span>Keep Busy</span></button>
                         <button id="news" class="button is-link" style=""><span>View News, earn $10 (once every 5min)</span></button>
+                        <?php
+                            if(isset($_SESSION["useruid"])) {
+                                echo "<button id='leaderboard' class='button is-success' style='margin:5px;'>Leaderboard</button>";
+                            }
+                        ?>
                         <a id="music" class="" data-playing="false" role="switch" aria-checked="false" style="background-color: rgba(0,0,0,0); border-width: 0px; margin:10px;">
                             <img id="music-img" src="images/play.png">
                         </a>

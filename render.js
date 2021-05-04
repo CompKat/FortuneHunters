@@ -248,12 +248,12 @@ $(async function() {
         result = result.split("|");
         //game = new Game(true, Number($("#money").text().split("$")[1]), Number($("#lemonade_value").text().substr(1)), Number($("#hotdog_value").text().substr(1))/5, Number($("#burger_value").text().substr(1))/15, Number($("#toy_value").text().substr(1))/50, Number($("#tech_value").text().substr(1))/200, Number($("#car_value").text().substr(1))/1000);
         game = new Game(true, Number(result[0]), Number(result[1]), Number(result[2]), Number(result[3]), Number(result[4]), Number(result[5]), Number(result[6]), 1);
-        $("#loading").remove();
+        $("#loading").hide();
         runBars(game);
         update(game);
     } else {
         game = new Game(false, 1, 0, 0, 0, 0, 0, 0, 1);
-        $("#loading").remove();
+        $("#loading").hide();
         update(game);
         runBars(game);
     }
@@ -309,9 +309,42 @@ $(async function() {
         }, 1500)
     });
 
-    $("body").on("click", "button", function(e) {
+    $("body").on("click", "button", async function(e) {
         if(e.target.id.substr(0,3) == "buy" && game.getMoney() >= Number($(`#${e.target.id}`).text().split("$")[1])) {
             game.buyItem(e.target.id.split("_")[1]);
+        } else if(e.target.id == "leaderboard") {
+            $("#loading").show();
+            let data = await $.ajax({
+                "method": "GET",
+                "url": "includes/leaderboard.inc.php"
+            });
+            let modal = $('<div id="leaderboard-mod" class="modal is-active"></div>');
+            let background = $('<div id="leaderboard-background" class="modal-background"></div>');
+            modal.append(background);
+            background.on("click", function() {
+                $("body").find("#leaderboard-mod").remove();
+            })
+            
+            let content = $('<div class="modal-content" style="background-color:white;"></div>');
+            let close = $('<button class="modal-close is-large" aria-label="close"></button>');
+            close.on("click", function(e) {
+                $("#leaderboard-mod").remove();
+            });
+            if(data == "0 results") {
+                content.append('<p class="subtitle is-3">Something went wrong when grabbing the leaderboard data!</p>');
+            } else {
+                let data_array = data.split("|");
+                data_array.pop();
+                content.append(`<p class="subtitle is-2" style="text-align:center;"><b>Leaderboard</b></p><br>`);
+                let max = data_array.length <= 10 ? data_array.length : 10
+                for(let i = 0; i < max; i++) {
+                    content.append(`<p class="subtitle is-3"> ${i+1}. ${data_array[i]}</p><br>`);
+                }
+            }
+            modal.append(content);
+            modal.append(close);
+            $('body').append(modal);
+            $("#loading").hide();
         }
     });
     $("#news").on('click', function() {
