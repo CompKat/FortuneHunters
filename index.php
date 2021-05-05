@@ -17,14 +17,10 @@
     </head>
 
     <style>
-        html, body {
-            height: 201vh;
-        }
         body, nav {
             background-image: url('images/background.jpg');
-            background-repeat: no-repeat;
+            background-repeat: repeat-y;
             background-attachment: fixed;
-            background-size: 100% 100%;
         }
     </style>
 
