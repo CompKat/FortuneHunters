@@ -8,3 +8,5 @@ to earn even more money and climb the leaderboard if you are signed in!
 ## API 
 This website features 3 different APIs. One for the "Keep Busy" weather searcher and two for the News button (One HTTPS Encrypted).
 
+## Database
+I used a JawsDB MySQL database to manage the data using SQL. This is a free version and may not work if the max size of the database is reached.
