@@ -10,3 +10,6 @@ This website features 3 different APIs. One for the "Keep Busy" weather searcher
 
 ## Database
 I used a JawsDB MySQL database to manage the data using SQL. This is a free version and may not work if the max size of the database is reached.
+
+### Other Points
+* The weather searcher under "Keep Busy" features an autocomplete for your search. 
