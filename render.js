@@ -258,6 +258,18 @@ $(async function() {
         runBars(game);
     }
 
+    if(localStorage.getItem("dark") == "true") {
+        $('body').css("background-image", 'url("images/dark-background.jpg")');
+        $('nav').css("background-image", 'url("images/dark-background.jpg")');
+        $('p').css("color", "white");
+        $(".dark")[0].checked = true;
+    } else if(localStorage.getItem("dark") == "false") {
+        $('body').css("background-image", 'url("images/background.jpg")');
+        $('nav').css("background-image", 'url("images/background.jpg")');
+        $('p').css("color", "black");
+        $(".dark")[0].checked = false;
+    }
+
     setInterval(function() {
         game.multipler = 2;
         $("#bonus").attr("hidden", false);
@@ -323,7 +335,7 @@ $(async function() {
             modal.append(background);
             background.on("click", function() {
                 $("body").find("#leaderboard-mod").remove();
-            })
+            });
             
             let content = $('<div class="modal-content" style="background-color:white;"></div>');
             let close = $('<button class="modal-close is-large" aria-label="close"></button>');
@@ -336,7 +348,7 @@ $(async function() {
                 let data_array = data.split("|");
                 data_array.pop();
                 content.append(`<p class="subtitle is-2" style="text-align:center;"><b>Leaderboard</b></p><br>`);
-                let max = data_array.length <= 10 ? data_array.length : 10
+                let max = data_array.length <= 10 ? data_array.length : 10;
                 for(let i = 0; i < max; i++) {
                     content.append(`<p class="subtitle is-3"> ${i+1}. ${data_array[i]}</p><br>`);
                 }
@@ -356,6 +368,21 @@ $(async function() {
             setTimeout(function() {
                 news_debounce = false;
             }, 300000);
+        }
+    });
+
+    $(".dark").on('change', function() {
+        let dark = $(".dark");
+        if(dark[0].checked == true) {
+            $('body').css("background-image", 'url("images/dark-background.jpg")');
+            $('nav').css("background-image", 'url("images/dark-background.jpg")');
+            $('p').css("color", "white");
+            localStorage.setItem("dark", "true");
+        } else {
+            $('body').css("background-image", 'url("images/background.jpg")');
+            $('nav').css("background-image", 'url("images/background.jpg")');
+            $('p').css("color", "black");
+            localStorage.setItem("dark", "false");
         }
     })
 })

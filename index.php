@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
         <link rel="stylesheet" href="loading.css">
+        <link rel="stylesheet" href="switch.css">
         <script src="https://kit.fontawesome.com/d03f11bef0.js" crossorigin="anonymous"></script>
        
         <title>Fortune Hunters</title>
@@ -21,6 +22,8 @@
             background-image: url('images/background.jpg');
             background-repeat: repeat-y;
             background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
         }
     </style>
 
@@ -151,6 +154,12 @@
                         <br><br>
                     </div>
                 </div>
+            </div>
+            <div style="position:fixed; bottom:0; margin-left:85%;">
+                <label class="switch">
+                <input class="dark" type="checkbox">
+                <span class="slider round"></span>
+                </label><p class="subtitle is-3">Dark mode</p>
             </div>
         </div>
 
