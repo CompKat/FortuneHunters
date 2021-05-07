@@ -13,3 +13,4 @@ I used a JawsDB MySQL database to manage the data using SQL. This is a free vers
 
 ### Other Points
 * The weather searcher under "Keep Busy" features an autocomplete for your search. 
+* Dark mode is implemented and saves in localStorage.
